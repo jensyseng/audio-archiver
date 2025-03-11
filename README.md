@@ -11,3 +11,9 @@ Archive all WAV files in the `samples` directory to FLAC and retain and metadata
 ```shell
 docker run --volume ./samples:/samples -it docker.io/ccgc/audio-archiver:747ba746 flac ./samples/*.wav --keep-foreign-metadata-if-present
 ```
+
+As above but archive all files with a modified date older than 90 days:
+
+```shell
+
+```docker run --volume ./samples:/samples -it docker.io/ccgc/audio-archiver:747ba746 find /samples -name "*.wav" -mtime +90 -exec flac --keep-foreign-metadata-if-present {} \;
